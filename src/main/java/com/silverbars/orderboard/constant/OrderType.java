@@ -1,4 +1,4 @@
-package com.silverbars.orderboard.contstant;
+package com.silverbars.orderboard.constant;
 
 public enum OrderType {
 

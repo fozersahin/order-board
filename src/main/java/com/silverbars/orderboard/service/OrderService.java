@@ -1,5 +1,6 @@
 package com.silverbars.orderboard.service;
 
+import com.silverbars.orderboard.constant.Summary;
 import com.silverbars.orderboard.model.Order;
 
 import java.util.List;
@@ -10,7 +11,5 @@ public interface OrderService {
 
     boolean removeOrder(Order order);
 
-    List<Order> getSellOrders();
-
-    List<Order> getBuyOrders();
+    List<Summary> getSummary();
 }

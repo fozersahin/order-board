@@ -2,24 +2,26 @@ package com.silverbars.orderboard.model;
 
 import com.silverbars.orderboard.constant.OrderType;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
-
+import java.io.Serializable;
 
 @Data
-public class Order {
+@NoArgsConstructor
+public class Order implements Serializable {
 
     @NotNull
-    private final String userId;
+    private String userId;
 
     @NotNull
-    private final int quantity;
+    private int quantity;
 
     @NotNull
-    private final int price;
+    private int price;
 
     @NotNull
-    private final OrderType orderType;
+    private OrderType orderType;
 
 
     public Order(String userId, int quantity, int price, OrderType orderType) {

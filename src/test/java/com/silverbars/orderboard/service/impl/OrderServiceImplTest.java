@@ -1,8 +1,8 @@
 package com.silverbars.orderboard.service.impl;
 
 import com.silverbars.orderboard.constant.OrderType;
-import com.silverbars.orderboard.constant.Summary;
 import com.silverbars.orderboard.model.Order;
+import com.silverbars.orderboard.model.Summary;
 import com.silverbars.orderboard.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest

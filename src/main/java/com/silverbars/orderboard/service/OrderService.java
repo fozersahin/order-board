@@ -1,7 +1,7 @@
 package com.silverbars.orderboard.service;
 
-import com.silverbars.orderboard.constant.Summary;
 import com.silverbars.orderboard.model.Order;
+import com.silverbars.orderboard.model.Summary;
 
 import java.util.List;
 

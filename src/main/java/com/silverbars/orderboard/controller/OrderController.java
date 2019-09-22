@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/order")
 public class OrderController {
 
     private OrderService orderService;
@@ -21,21 +21,21 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/registerOrder")
+    @PostMapping("/register")
     public boolean registerOrder(@Valid @RequestBody Order order) {
 
         return orderService.addOrder(order);
 
     }
 
-    @PostMapping("/cancelOrder")
+    @PostMapping("/cancel")
     public boolean cancelOrder(@Valid @RequestBody Order order) {
 
         return orderService.removeOrder(order);
 
     }
 
-    @GetMapping("/getSummary")
+    @GetMapping("/summary")
     public List<Summary> getSummary() {
 
         return orderService.getSummary();

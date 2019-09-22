@@ -45,7 +45,7 @@ class OrderBoardApplicationTests {
         String jsonValue = objectMapper.writeValueAsString(order);
 
 
-        MvcResult registerResult = this.mockMvc.perform(post("/v1/registerOrder").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
+        MvcResult registerResult = this.mockMvc.perform(post("/order/register").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -55,7 +55,7 @@ class OrderBoardApplicationTests {
         assertEquals(true, response);
 
 
-        MvcResult summaryResult = this.mockMvc.perform(get("/v1/getSummary")).andDo(print())
+        MvcResult summaryResult = this.mockMvc.perform(get("/order/summary")).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect((content().contentType("application/json")))
                 .andReturn();
@@ -85,7 +85,7 @@ class OrderBoardApplicationTests {
 
 
         //adds order and checks it
-        MvcResult registerResult = this.mockMvc.perform(post("/v1/registerOrder").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
+        MvcResult registerResult = this.mockMvc.perform(post("/order/register").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -95,7 +95,7 @@ class OrderBoardApplicationTests {
         assertEquals(true, response);
 
         //removes order
-        this.mockMvc.perform(post("/v1/cancelOrder").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
+        this.mockMvc.perform(post("/order/cancel").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
                 .andExpect(status().isOk())
                 //.andExpect(content().contentType("boolean"))
                 .andReturn();
@@ -104,7 +104,7 @@ class OrderBoardApplicationTests {
 
 
         //we expecting summary report empty
-        MvcResult summaryResult = this.mockMvc.perform(get("/v1/getSummary")).andDo(print())
+        MvcResult summaryResult = this.mockMvc.perform(get("/order/summary")).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect((content().contentType("application/json")))
                 .andReturn();
@@ -125,13 +125,13 @@ class OrderBoardApplicationTests {
         Order order = new Order(null, 1, 349, OrderType.BUY);
         String jsonValue = objectMapper.writeValueAsString(order);
 
-        this.mockMvc.perform(post("/v1/registerOrder").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
+        this.mockMvc.perform(post("/order/register").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
                 .andExpect(status().is4xxClientError());
 
         order = new Order("user1", 1, 349, null);
         jsonValue = objectMapper.writeValueAsString(order);
 
-        this.mockMvc.perform(post("/v1/registerOrder").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
+        this.mockMvc.perform(post("/order/register").contentType(MediaType.APPLICATION_JSON).content(jsonValue))
                 .andExpect(status().is4xxClientError());
 
 
